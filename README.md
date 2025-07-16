@@ -17,17 +17,23 @@ A simple Python implementation of the Hill Cipher with a web interface to encryp
    cd hillcipher
    ```
 
-2. **Install Python packages**
+2. **Create and activate virtual environment** (recommended)
    ```bash
-   pip install numpy streamlit
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
-3. **Run the app**
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the app**
    ```bash
    streamlit run app.py
    ```
 
-4. **Open your browser** - it will automatically open at `http://localhost:8501`
+5. **Open your browser** - it will automatically open at `http://localhost:8501`
 
 ## How to Use
 
@@ -63,8 +69,15 @@ print(f"Decrypted: {decrypted}")  # Output: HELLOX
 
 ## Troubleshooting
 
-- **ModuleNotFoundError**: Run `pip install numpy streamlit`
+- **Python not found**: Make sure Python 3.7+ is installed
+- **Virtual environment**: If you skip step 2, you might get permission errors
+- **ModuleNotFoundError**: Make sure you ran `pip install -r requirements.txt`
 - **Port already in use**: Try `streamlit run app.py --server.port 8502`
 - **Matrix not invertible**: The key matrix must be invertible mod 26
+
+**To deactivate virtual environment when done:**
+```bash
+deactivate
+```
 
 That's it! 🎉
