@@ -1,62 +1,70 @@
-# Hill Cipher Application
+# Hill Cipher - Encryption & Decryption
 
-A Python implementation of the Hill Cipher encryption/decryption algorithm with a Streamlit web interface. Demonstrates numerical linear algebra operations including matrix multiplication, modular arithmetic, and matrix inversion.
+A simple Python implementation of the Hill Cipher with a web interface to encrypt and decrypt text using matrix operations.
 
-## Features
+## What You Get
 
-- **Hill Cipher Implementation**: Encrypt/decrypt text using 2x2, 3x3, or 4x4 key matrices
-- **Matrix Operations**: NumPy-based matrix computations with mod 26 arithmetic
-- **Interactive Web UI**: Clean Streamlit interface with step-by-step visualizations
-- **Key Validation**: Automatically validates key matrices (must be invertible mod 26)
-- **Visual Steps**: Shows matrix operations and numerical transformations
+- **Encrypt/Decrypt text** using Hill Cipher algorithm
+- **Web interface** to input text and key matrices
+- **Visual step-by-step** matrix operations
+- **Supports 2x2, 3x3, and 4x4** key matrices
 
-## Quick Start
+## Quick Setup
 
-1. **Install dependencies:**
-```bash
-pip install -r requirements.txt
-```
+1. **Clone this repository**
+   ```bash
+   git clone <your-repo-url>
+   cd hillcipher
+   ```
 
-2. **Run the web app:**
-```bash
-streamlit run app.py
-```
+2. **Install Python packages**
+   ```bash
+   pip install numpy streamlit
+   ```
 
-3. **Use the interface:**
-   - Enter text to encrypt/decrypt
-   - Set a key matrix (or generate random)
-   - View results with step-by-step matrix operations
+3. **Run the app**
+   ```bash
+   streamlit run app.py
+   ```
 
-## Files
+4. **Open your browser** - it will automatically open at `http://localhost:8501`
 
-- `cipher.py` - Core Hill Cipher implementation
-- `app.py` - Streamlit web interface  
-- `requirements.txt` - Python dependencies
+## How to Use
 
-## Hill Cipher Algorithm
+1. **Enter your text** in the input box
+2. **Choose operation**: Encrypt or Decrypt
+3. **Set key matrix**: Enter numbers or click "Generate Random Key Matrix"
+4. **View results** with step-by-step matrix operations
 
-**Encryption**: C = K × P (mod 26)  
-**Decryption**: P = K⁻¹ × C (mod 26)
+## Example
 
-Where K is the key matrix, P is plaintext vector, C is ciphertext vector.
-
-### Example
 ```python
+# You can also use it directly in Python
 from cipher import HillCipher
 import numpy as np
 
 cipher = HillCipher()
 key = np.array([[3, 2], [5, 7]])
 
+# Encrypt
 encrypted, _ = cipher.encrypt("HELLO", key)
-decrypted, _ = cipher.decrypt(encrypted, key)
+print(f"Encrypted: {encrypted}")  # Output: DLDCKX
 
-print(f"HELLO → {encrypted} → {decrypted}")
-# Output: HELLO → DLDCKX → HELLOX
+# Decrypt
+decrypted, _ = cipher.decrypt(encrypted, key)
+print(f"Decrypted: {decrypted}")  # Output: HELLOX
 ```
 
-The implementation handles:
-- Matrix validation (must be invertible mod 26)
-- Text preprocessing (uppercase, remove spaces)
-- Automatic padding with 'X'
-- Step-by-step visualization of matrix operations
+## Files
+
+- `cipher.py` - Hill Cipher implementation
+- `app.py` - Streamlit web interface
+- `requirements.txt` - Python dependencies
+
+## Troubleshooting
+
+- **ModuleNotFoundError**: Run `pip install numpy streamlit`
+- **Port already in use**: Try `streamlit run app.py --server.port 8502`
+- **Matrix not invertible**: The key matrix must be invertible mod 26
+
+That's it! 🎉
