@@ -49,8 +49,9 @@ def main():
         
         st.subheader("🔑 Key Matrix")
         
-        # Key matrix input
-        if 'key_matrix' not in st.session_state:
+        # Key matrix input - check if matrix size changed
+        if ('key_matrix' not in st.session_state or 
+            st.session_state.key_matrix.shape[0] != matrix_size):
             if matrix_size == 2:
                 st.session_state.key_matrix = np.array([[3, 2], [5, 7]])
             elif matrix_size == 3:

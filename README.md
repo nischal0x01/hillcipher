@@ -69,15 +69,8 @@ print(f"Decrypted: {decrypted}")  # Output: HELLOX
 
 ## Troubleshooting
 
-- **Python not found**: Make sure Python 3.7+ is installed
-- **Virtual environment**: If you skip step 2, you might get permission errors
-- **ModuleNotFoundError**: Make sure you ran `pip install -r requirements.txt`
+- **ModuleNotFoundError**: Run `pip install numpy streamlit`
 - **Port already in use**: Try `streamlit run app.py --server.port 8502`
 - **Matrix not invertible**: The key matrix must be invertible mod 26
-
-**To deactivate virtual environment when done:**
-```bash
-deactivate
-```
 
 That's it! 🎉
